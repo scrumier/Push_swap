@@ -1,45 +1,45 @@
-# Push Swap - Sorting Algorithm Challenge 📊
+# Push_swap
 
-Welcome to my **Push Swap** project! This project is all about creating an efficient algorithm to sort data on a stack using a limited set of operations. It’s a fun and challenging exercise in algorithm design and optimization.
+A sorting algorithm using two stacks and a limited set of operations.
 
-## 📖 Project Overview
-The **Push Swap** project at **École 42** requires implementing a program that sorts integers using two stacks (referred to as `a` and `b`). The goal is to sort the stack `a` with the fewest operations possible, utilizing only a restricted set of commands:
+## What it does
 
-- **sa**: Swap the first two elements on stack `a`.
-- **sb**: Swap the first two elements on stack `b`.
-- **ss**: Perform both `sa` and `sb` simultaneously.
-- **pa**: Push the top element from stack `b` to stack `a`.
-- **pb**: Push the top element from stack `a` to stack `b`.
-- **ra**: Rotate stack `a` (shift all elements up by one).
-- **rb**: Rotate stack `b` (shift all elements up by one).
-- **rr**: Perform both `ra` and `rb` simultaneously.
-- **rra**: Reverse rotate stack `a` (shift all elements down by one).
-- **rrb**: Reverse rotate stack `b` (shift all elements down by one).
-- **rrr**: Perform both `rra` and `rrb` simultaneously.
+Push_swap sorts a list of integers using two stacks, named `a` and `b`. The program receives a list of numbers as arguments and outputs the shortest sequence of operations needed to sort stack `a` in ascending order.
 
-## 🔄 Sorting Algorithm: Radix Sort
-To achieve efficient sorting, I implemented **Radix Sort**. Radix Sort is particularly effective for this project because it has a time complexity of **O(n log n)** and requires minimal stack operations. Here's how it works in the context of Push Swap:
+## Operations
 
-1. **Binary Representation**: The integers are sorted based on their binary representation. Each bit in the binary form of the numbers is evaluated from the least significant bit (LSB) to the most significant bit (MSB).
-2. **Bitwise Sorting**: For each bit position, numbers are either pushed to stack `b` or left in stack `a` based on whether that bit is 0 or 1.
-3. **Reassembling**: After sorting based on each bit, the numbers are returned to stack `a` in the correct order, repeating the process for the next bit until the entire sequence is sorted.
+| Operation | Description |
+|-----------|-------------|
+| `sa` | Swap the top two elements of stack a |
+| `sb` | Swap the top two elements of stack b |
+| `ss` | `sa` and `sb` at the same time |
+| `pa` | Push the top of b onto a |
+| `pb` | Push the top of a onto b |
+| `ra` | Rotate stack a upward |
+| `rb` | Rotate stack b upward |
+| `rr` | `ra` and `rb` at the same time |
+| `rra` | Reverse rotate stack a |
+| `rrb` | Reverse rotate stack b |
+| `rrr` | `rra` and `rrb` at the same time |
 
-This method is both effective and minimizes the number of operations, allowing Push Swap to handle larger numbers within the operation limit.
+## Usage
 
-## 📝 Compilation & Usage
-To compile the project, run:
-```bash
-make
-```
-This will generate the `push_swap` executable. You can then test the sorting algorithm on a set of integers:
-```bash
-./push_swap [list of integers]
+```sh
+./push_swap 4 2 7 1 5
 ```
 
-## 📈 Learning Outcomes
-Through the Push Swap project, I honed my understanding of stack manipulation, algorithm optimization, and bitwise operations. Implementing radix sort and adapting it for limited stack operations was both challenging and rewarding.
+The program prints the list of operations to standard output.
 
-## 🔗 Connect with Me
-If you’re interested in discussing this project or have any suggestions, feel free to connect with me on [LinkedIn](https://www.linkedin.com/in/sonam-crumiere/).
+To check the result:
 
-Happy sorting!
+```sh
+./push_swap 4 2 7 1 5 | ./checker 4 2 7 1 5
+```
+
+## Algorithm
+
+Small lists (up to 3 elements) use hardcoded optimal solutions. Larger lists use a chunk-based algorithm that partitions numbers into groups and pushes them strategically to minimize the total number of moves.
+
+## Project context
+
+This is a School 42 project. The goal is to think about algorithmic complexity and to find an efficient sorting strategy under tight constraints.

@@ -14,13 +14,13 @@ NAME = push_swap
 CC = cc
 RM = rm -f
 FLAGS = -Wall -Wextra -Werror
-OBJ_DIR = obj/
+OBJ_DIR = obj
 SRC_DIR = src/
 SRC_1 = instructions1.c instructions2.c instructions3.c main.c radix.c \
 		sort_five.c sort_five_bis.c utils.c t_list.c index.c check_args.c \
 		free_list.c
 
-OBJ_1 = $(addprefix $(OBJ_DIR), $(SRC_1:.c=.o))
+OBJ_1 = $(addprefix $(OBJ_DIR)/, $(SRC_1:.c=.o))
 
 LIBFT_DIR = libft
 LIBFT_MAKEFILE = $(LIBFT_DIR)/Makefile
@@ -33,7 +33,7 @@ all: $(NAME)
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJ_DIR)
+$(OBJ_DIR)/%.o: $(SRC_DIR)%.c | $(OBJ_DIR)
 	$(CC) $(FLAGS) $(LIBFT_INC) -MMD -MP -c $< -o $@
 
 -include $(OBJ_1:.o=.d)

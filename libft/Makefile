@@ -23,9 +23,9 @@ LIBFT_SRC      =   $(addprefix $(LIBFT_SRC_DIR), \
 					ft_memset.c ft_putstr_fd.c ft_strjoin.c ft_strmapi.c \
 					ft_strtrim.c ft_striteri.c ft_atoi.c)
 
-LIBFT_OBJ_DIR   =   .libft_obj/
+LIBFT_OBJ_DIR   =   .libft_obj
 
-LIBFT_OBJ = $(addprefix $(LIBFT_OBJ_DIR), $(LIBFT_SRC:$(LIBFT_SRC_DIR)%.c=%.o))
+LIBFT_OBJ = $(addprefix $(LIBFT_OBJ_DIR)/, $(LIBFT_SRC:$(LIBFT_SRC_DIR)%.c=%.o))
 
 LIBFT_CC = gcc
 LIBFT_FLAGS = -Wall -Wextra -Werror
@@ -37,7 +37,7 @@ LIBFT_RM = rm -f
 
 all: $(LIBFT_NAME)
 
-$(LIBFT_OBJ_DIR)%.o: $(LIBFT_SRC_DIR)%.c | $(LIBFT_OBJ_DIR)
+$(LIBFT_OBJ_DIR)/%.o: $(LIBFT_SRC_DIR)%.c | $(LIBFT_OBJ_DIR)
 	$(LIBFT_CC) $(LIBFT_FLAGS) -MMD -MP -c $< -o $@ $(LIBFT_INC)
 
 $(LIBFT_OBJ_DIR) $(GNL_OBJ_DIR) $(PRINTF_OBJ_DIR):
@@ -54,6 +54,7 @@ clean:
 
 fclean: clean
 	$(LIBFT_RM) $(LIBFT_NAME)
+	$(LIBFT_RM) -r $(LIBFT_OBJ_DIR)
 
 re: fclean all
 

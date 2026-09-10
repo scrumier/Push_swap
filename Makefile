@@ -16,7 +16,8 @@ RM = rm -f
 FLAGS = -Wall -Wextra -Werror
 OBJ_DIR = obj
 SRC_DIR = src/
-SRC_1 = instructions1.c instructions2.c instructions3.c main.c radix.c \
+SRC_1 = instructions1.c instructions2.c instructions3.c main.c turk_sort.c \
+		costs.c targets.c apply.c \
 		sort_five.c sort_five_bis.c utils.c t_list.c index.c check_args.c \
 		free_list.c
 

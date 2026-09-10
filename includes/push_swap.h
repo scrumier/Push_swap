@@ -22,6 +22,14 @@ typedef struct s_list
 	struct s_list	*next;
 }				t_list;
 
+typedef struct s_move
+{
+	int				ra;
+	int				rb;
+	int				rra;
+	int				rrb;
+}				t_move;
+
 t_list	*ft_lstnew(int value);
 int		ft_lstsize(t_list *head);
 t_list	*ft_lstlast(t_list *head);
@@ -44,11 +52,19 @@ int		get_min(t_list **list, int val);
 void	sort_3(t_list **list_a, t_list **list_b);
 void	sort_4(t_list **list_a, t_list **list_b);
 void	sort_5(t_list **list_a, t_list **list_b);
-void	radix_sort(t_list **list_a, t_list **list_b);
 void	simple_sort(t_list **list_a, t_list **list_b);
 void	make_ra_sa_rra(t_list **list_a, t_list **list_b);
 void	calculate_min_values(t_list **list_a, int *min, int *next_min);
 void	sort_logic(t_list **list_a, t_list **list_b, int min, int next_min);
+
+void	big_sort(t_list **list_a, t_list **list_b);
+t_list	*stack_min(t_list *stack);
+t_list	*stack_max(t_list *stack);
+t_list	*target_in_a(t_list *a, int index);
+t_list	*target_in_b(t_list *b, int index);
+int		best_move(t_list *a, t_list *b, t_list *node, t_move *mv);
+void	pick_move(t_list *a, t_list *b, t_move *mv);
+void	apply_move(t_list **a, t_list **b, t_move *mv);
 
 int		rotate(t_list **list);
 int		reverse_rotate(t_list **list);

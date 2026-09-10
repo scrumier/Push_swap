@@ -42,7 +42,7 @@ static void	sort_list(t_list **list_a, t_list **list_b)
 	if (ft_lstsize(*list_a) <= 5)
 		simple_sort(list_a, list_b);
 	else
-		radix_sort(list_a, list_b);
+		big_sort(list_a, list_b);
 }
 
 int	main(int argc, char **argv)
